@@ -6,6 +6,7 @@ def fetch_jobs():
     feeds = [
         'https://aijobs.ai/rss?level=entry',
         'https://topstartups.io/jobs/feed/',
+        jobs.append("Test Job - AI Intern\nhttps://example.com/job")
     ]
     jobs = []
     for url in feeds:
