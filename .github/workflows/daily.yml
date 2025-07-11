@@ -1,0 +1,28 @@
+name: Daily AI/ML Job Email
+
+on:
+  schedule:
+    - cron: '0 17 * * *'  # Runs daily at 12 PM Central Time
+  workflow_dispatch:
+
+jobs:
+  send_jobs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: pip install feedparser
+
+      - name: Run scraper
+        env:
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: python job_scraper.py
