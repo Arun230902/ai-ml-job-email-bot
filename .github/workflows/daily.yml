@@ -2,7 +2,7 @@ name: Daily AI/ML Job Email
 
 on:
   schedule:
-    - cron: '0 17 * * *'  # Runs daily at 12 PM Central Time
+    - cron: '*/5 * * * *'  # every 5 minutes (for testing only!)
   workflow_dispatch:
 
 jobs:
